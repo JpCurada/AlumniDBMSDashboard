@@ -47,7 +47,8 @@ fig = px.bar(
     barmode='group',
     labels={'Count': 'Count', 'Percentage': 'Percentage'},
     hover_data={'Percentage': ':.2f%'},
-    title = 'Comparison Graph for Courses taken by our alumni'
+    title = 'Comparison Graph for Courses taken by our alumni',
+    color_discrete_sequence =['#FF4B4B']*2
 )
 
 if len(selected_courses) < 3:
@@ -67,7 +68,7 @@ u_grouped_data = u_filtered_data.groupby('University').size().reset_index(name='
 university_totals = len(data['University'])
 u_grouped_data['Percentage'] = u_grouped_data['Count'] / university_totals * 100
 
-u_fig = px.bar(u_grouped_data, x='University', y='Count', text='Percentage')
+u_fig = px.bar(u_grouped_data, x='University', y='Count', text='Percentage', color_discrete_sequence =['#FF4B4B']*2)
 
 u_fig.update_traces(texttemplate='%{text:.2f}%', textposition='outside')
 
